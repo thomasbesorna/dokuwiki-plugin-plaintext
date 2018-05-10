@@ -26,14 +26,20 @@ class syntax_plugin_plaintext_inline extends DokuWiki_Syntax_Plugin {
     /**
      * Handle the match
      */
-    function handle($match, $state, $pos, &$handler){
+//(tbe)-begin-
+//  function handle($match, $state, $pos, &$handler){
+    function handle($match, $state, $pos, Doku_Handler $handler){
+//(tbe)-end-
         return substr($match,6,-7);
     }
 
     /**
      * Create output
      */
-    function render($format, &$renderer, $data) {
+//(tbe)-begin-
+//  function render($format, &$renderer, $data) {
+    function render($format, Doku_Renderer $renderer, $data) {
+//(tbe)-end-
         if($format == 'xhtml'){
             $renderer->doc .= str_replace( "\n", "<br/>".DOKU_LF, trim($renderer->_xmlEntities($data),"\n") );
             return true;
